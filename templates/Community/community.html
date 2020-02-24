@@ -1,0 +1,392 @@
+{% load widget_tweaks %}
+{% load pagination_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>REF Relief</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="../../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+
+    <link rel="stylesheet" href="../../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../static/css/magnific-popup.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="../../static/css/aos.css">
+
+    <link rel="stylesheet" href="../../static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../../static/css/flaticon.css">
+    <link rel="stylesheet" href="../../static/css/icomoon.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/filter/main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="bg-top navbar-light">
+    <div class="container">
+        <div class="row no-gutters d-flex align-items-center align-items-stretch">
+            <div class="col-md-4 d-flex align-items-center">
+                <a class="navbar-brand" href="/">| R E F <span style="font-size: 20px; padding-left: 70px" class="notranslate">Relief</span> </a>
+                <span style="font-size: 15px; font-weight: bold; padding-left: 70px; margin-top: 95px; margin-left: -230px">A job readiness resource for refugees</span>
+            </div>
+            <div class="col-lg-8 d-block">
+                <div class="row d-flex align-items-center py-4" style="height: 118px">
+                    <div class="col-md topper d-flex align-items-center justify-content-end">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container d-flex align-items-center px-4">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <!-- Google Translation -->
+        <!-- Google Translation -->
+        <ul class="d-flex order-lg-last" style="margin: auto; padding: inherit">
+            <a href="#googtrans(en)" class="lang-en lang-select abc" data-lang="en"><img
+                    src="../static/images/Flags/australia_language.png" width="60px" height="45px"><span
+                    class="notranslate tooltiptext">English</span></a>
+            <a href="#googtrans(ar)" class="lang-ar lang-select abc" data-lang="ar"><img
+                    src="../static/images/Flags/iraq_language.png" width="60px" height="45px"><span
+                    class="notranslate tooltiptext">العراق</span></a>
+            <a href="#googtrans(ar)" class="lang-ar lang-select abc" data-lang="ar"><img
+                    src="../static/images/Flags/syria_language.png" width="60px" height="45px"><span
+                    class="notranslate tooltiptext">العراق</span></a>
+            <a href="#googtrans(my)" class="lang-my lang-select abc" data-lang="my"><img
+                    src="../static/images/Flags/myanmar_language.png" width="60px" height="45px" alt="Burmese"><span
+                    class="notranslate tooltiptext">မြန်မာ</span></a>
+        </ul>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="/" class="nav-link pl-0">Home</a></li>
+                <li class="nav-item"><a href="events_list" class="nav-link">Find Events</a></li>
+                <li class="nav-item"><a href="English_Course_list" class="nav-link">Find English Courses</a></li>
+                <li class="nav-item active"><a href="community_class_list" class="nav-link">Find Community Classes</a>
+                </li>
+                <li class="dropdown" style="font-size: 14px">
+                    <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
+                        Education
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="school_list">Find Schools</a>
+                        <a class="dropdown-item" href="scholarship_list">Find Scholarships</a>
+                    </div>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2"
+         style="background-image: url('../../static/images/photo-1529209076408-5a115ec9f1c6.jpeg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="s008">
+                <input id="suburb_postcode" name="suburb_postcode" type="hidden" value="{{ suburbs_postcodes }}">
+                <form method="get" style="width: 65%">
+                    <div class="inner-form">
+                        <div class="advance-search">
+                            <div style="margin-left: 22%; margin-top: -5%">
+                                <h1 class="mb-2 bread">Find a Community Class</h1>
+                            </div>
+                            <div class="row" style="margin-bottom: 30px;">
+                                <div class="input-field" style="width: 30%">
+                                    <div class="input-select" style="color: white">
+                                        {% render_field filter.form.country class="form-control" %}
+                                    </div>
+                                </div>
+                                <div class="input-field" style="width: 30%">
+                                    <div class="input-select" style="color: white">
+                                        {% render_field filter.form.time class="form-control" %}
+                                    </div>
+                                </div>
+                                <div class="input-field" style="width: 30%">
+                                    <div class="input-select" style="color: white">
+                                        {% render_field filter.form.distance_filter class="form-control" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 60px;">
+                                <div class="input-field" style="width: 100%">
+                                    <div class="input-select">
+                                        <label>Suburb and Postcode</label>
+                                        <input style="padding: 0px 0px 0px 5px; height: 44px; background: none; border-bottom: 2px solid white; color: white" id="suburb_postcode_submit" name="suburb_postcode_submit" placeholder="Please enter and select from the dropdown" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row third">
+                                <div class="input-field">
+                                    <div class="result-count">
+                                        {% if community_class_error_code == 0 %}
+                                            <span>{{ filter.qs.count }} </span>results
+                                        {% else %}
+                                            <span>0 </span>results
+                                        {% endif %}
+                                    </div>
+                                    <div class="group-btn">
+                                        <button class="btn-search" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3 ftco-animate text-center">
+                <div class="arrow bounce">
+                  <a class="fa fa-arrow-down fa-2x ct-btn-scroll ct-js-btn-scroll" href="#section2" style="color: white"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section" id="section2">
+    <div class="container">
+            {% if community_class_error_code == 1 %}
+                <h1 style="text-align: center; font-size: 30px"> No Results </h1>
+            {% else %}
+         <div class="row">
+                {% autopaginate filter.qs 6 as filter_list %}
+                {% for community_class in filter_list %}
+                    <div class="col-md-6 col-lg-4 course ftco-animate">
+                        <div class="blog-entry" style="height: 400px">
+                            <div class="meta-date text-center p-2">
+                                <span>Time: {{ community_class.field_start_time }} - {{ community_class.end_time }}</span>
+                            </div>
+                            <div style="float: right; font-weight: bold; margin-right: 2%">
+                                <p class="ml-auto mb-0">
+                                    {% if community_class.distance == 0 %}
+                                        <a class="meta-chat">< 1 km from {{ suburb_chosen }} </a>
+                                    {% else %}
+                                        <a class="meta-chat">{{ community_class.distance }} km from {{ suburb_chosen }} </a>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="text p-4">
+                                <h3 class="heading" style="font-weight: bold">{{ community_class.class_name }}</h3>
+                                    <p class="meta d-flex">
+                                        <span style="width: 70%"><i class="fas fa-calendar-alt" style="font-size: 25px"></i>&nbsp;{{ community_class.weekday }}</span>
+                                        <span style="width: 100%"><i class="fas fa-phone-alt" style="font-size: 25px"></i>&nbsp;{{ community_class.contact }}</span>
+                                        <span style="width: 70%"><i class="fas fa-globe-asia" style="font-size: 25px"></i>&nbsp;{{ community_class.country }}</span>
+                                    </p>
+                                    <p class="meta d-flex">
+                                        <span style="width: 100%"><i class="fas fa-users" style="font-size: 25px"></i>&nbsp;{{ community_class.community }}</span>
+                                    </p>
+                                    <p class="meta d-flex">
+                                        <span style="width: 100%"><i class="fas fa-map-marked-alt" style="font-size: 25px"></i>&nbsp;{{ community_class.address }}</span>
+                                    </p>
+                                    <p class="meta d-flex">
+                                        <span style="width: 100%"><i class="fas fa-star" style="font-size: 25px"></i>&nbsp;Review  {{ community_class.review }}</span>
+                                    </p>
+                            </div>
+                            <div style="position: absolute; bottom: 10%; width: 90%">
+                                    <button type="button" class="btn btn-primary" style="margin-left: 5%"
+                                            onclick="window.open('{{ community_class.website }}')">
+                                        Find Details
+                                    </button>
+                                    <button type="button" class="btn btn-primary" style="float: right"
+                                            onclick="getLocation({{ community_class.lat }}, {{ community_class.lng }})">
+                                        Directions
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                {% endfor %}
+           </div>
+            <div class="row" style="margin: auto">
+                {% paginate %}
+             </div>
+            {% endif %}
+    </div>
+</section>
+
+
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">About REF Relief</h2>
+                    <div class="block-23 mb-3">
+                        <p>REF Relief is a website where refugee youth originating from Iraq, Syria and Myanmar can go to discover information and resources close to them that can help foster community inclusion and job readiness.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" style="padding-left: 4%">
+                <div class="ftco-footer-widget mb-5 ml-md-4">
+                    <h2 class="ftco-heading-2">Navigations</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="/"><span class="fas fa-home"></span>&nbsp;Home</a></li>
+                        <li><a href="events_list"><span class="fas fa-calendar-alt"></span>&nbsp;Find
+                            Events</a></li>
+                        <li><a href="school_list"><span class="fas fa-school"></span>&nbsp;Find
+                            Schools</a></li>
+                        <li><a href="scholarship_list"><span class="fas fa-graduation-cap"></span>&nbsp;Find
+                            Scholarships</a></li>
+                        <li><a href="English_Course_list"><span class="fab fa-leanpub"></span>&nbsp;Find
+                            English Courses</a></li>
+                        <li><a href="community_class_list"><span class="fas fa-users"></span>&nbsp;Find
+                            Community Classes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">Contact Us</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-envelope"></span><span class="text">ref.relief@yahoo.com</span>
+                            </li>
+                            <li><span class="icon icon-facebook-square"></span><span class="text">https://www.facebook.com/ref.relief.9</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../../static/js/popper.min.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<script src="../../static/js/jquery.easing.1.3.js"></script>
+<script src="../../static/js/jquery.waypoints.min.js"></script>
+<script src="../../static/js/jquery.stellar.min.js"></script>
+<script src="../../static/js/owl.carousel.min.js"></script>
+<script src="../../static/js/jquery.magnific-popup.min.js"></script>
+<script src="../../static/js/aos.js"></script>
+<script src="../../static/js/jquery.animateNumber.min.js"></script>
+<script src="../../static/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="../../static/js/google-map.js"></script>
+<script src="../../static/js/mains.js"></script>
+<script src="../../static/js/filter/extention/choice.js"></script>
+<script>
+    const customSelects = document.querySelectorAll("select");
+    const deleteBtn = document.getElementById('delete');
+    const choices = new Choices('select',
+        {
+            searchEnabled: false,
+            removeItemButton: true,
+            itemSelectText: '',
+        });
+    for (let i = 0; i < customSelects.length; i++) {
+        customSelects[i].addEventListener('addItem', function (event) {
+            if (event.detail.value) {
+                let parent = this.parentNode.parentNode;
+                parent.classList.add('valid');
+                parent.classList.remove('invalid')
+            } else {
+                let parent = this.parentNode.parentNode;
+                parent.classList.add('invalid');
+                parent.classList.remove('valid')
+            }
+        }, false);
+    }
+    deleteBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const deleteAll = document.querySelectorAll('.choices__button');
+        for (let i = 0; i < deleteAll.length; i++) {
+            deleteAll[i].click();
+        }
+    });
+
+</script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- Google Translate Script -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+                pageLanguage: '',
+                layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT,
+            },
+            'google_translate_element');
+    }
+
+    function triggerHtmlEvent(element, eventName) {
+        var event;
+        if (document.createEvent) {
+            event = document.createEvent('HTMLEvents');
+            event.initEvent(eventName, true, true);
+            element.dispatchEvent(event);
+        } else {
+            event = document.createEventObject();
+            event.eventType = eventName;
+            element.fireEvent('on' + event.eventType, event);
+        }
+    }
+
+    jQuery('.lang-select').click(function () {
+        var theLang = jQuery(this).attr('data-lang');
+        jQuery('.goog-te-combo').val(theLang);
+
+        //alert(jQuery(this).attr('href'));
+        window.location = jQuery(this).attr('href');
+        location.reload();
+
+    });
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        var suburb_a = document.getElementById("suburb_postcode").value;
+        var suburb_b = suburb_a.replace(/'/g, "");
+        var suburb_c = suburb_b.replace("[", "");
+        var suburb_array = suburb_c.replace("]", "");
+        var suburb_new_array = suburb_array.split(",");
+
+        $("#suburb_postcode_submit").autocomplete({
+            source: suburb_new_array
+        });
+    });
+</script>
+<script src="../../static/js/scroll_down.js" ></script>
+
+<script>
+function getLocation(latitude, longitude) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // Get the positioning coordinates.
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      var location_set = [lat, lon, latitude, longitude];
+      var map_url = 'directions?location_set=' + location_set;
+      window.location = map_url;
+      // Do something magical...
+    }, function() {
+      alert('Oops! An error occurred.');
+    });
+}
+</script>
+</body>
+</html>

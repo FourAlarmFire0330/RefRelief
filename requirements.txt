@@ -5,4 +5,4 @@ django-widget-tweaks==1.4.5
 geographiclib==1.49
 geopy==1.20.0
 pytz==2019.2
-sqlparse==0.3.0
+sqlparse==0.4.4
